@@ -1,0 +1,38 @@
+Co zobrazuje vykreslený graf ve skriptu porovnávající metody? 
+
+	Graf zobrazuje rychlosti konergence různých metod: 
+		* prostá iterace,
+		* Jacobiho metoda
+		* Gauss-Seidelova metoda,
+		* superrelaxace bez optimalizoané omegy,
+		* superrelaxace s optimaizovanou omegou. 
+	Tyto metody byly aplikovány na náhodně vygenerované matice 3x3, 
+	ale po několikerém spuštění programu a vykreslení grafů je patrné, 
+	že některé metody si vedou lépe než jiné. 
+
+====================================================================
+Jaký z toho usuzujete závěr? 
+	
+	Jako jednoznačně nejlepší se ukázala být superrelaxace s optimaizovanou omegou, 
+	která byla vždy nejrychlejší, ačkoli někdy jí velmi těsně "doháněla" Gauss-Seidelova
+	metoda (a jednou z asi 50 případů byla dokonce Gauss-Seideloa metoda rychlejší). 
+	
+	Rychlost ostatních metod se značně lišila případ od případu,
+	někdy byla superrelaxace bez optimalizoané omegy jednoznačně 
+	nejpomalejší (zhruba tak ve 3 případech z 10), 
+	několikrát naopak "předběhla" jak Jacobiho, tak Iterační metodu (Gauss-Seidela nikdy). 
+	
+	Přibližně ve 3 případeh z 10 byla Jcobiho metoda rychlejší než prostá iterační
+	a jednou byly tyto dvě metody nastejno.
+	V jednom případě z 20 Jacobiho metoda nekonvergovala vůbec. 
+
+====================================================================
+Proč Superrelaxační metoda bez ideální volby omega dopadla hůře než obyčejný Gauss-Seidel?
+
+	Gauss-Seidel je speciální případ superrelaxační metody, kde omega = 1 
+	(a protože omegou násobíme, nemá na optimalizaci žádný vliv). 
+	Pokud zvolíme omegu špatně, můžeme naše snahy o urychlení konvergence "sabotovat". 
+	Šance, že "uhodneme" omegu, která bude alespoň stejně dobrá, jako samotný Gauss-Seidel
+	(a která se nebude rovnat jedné, samozřejmě) je dost malá. Po vygenerování zhruba stovky grafů
+	se to nepodařilo ani jednou. 
+	
