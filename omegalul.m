@@ -15,7 +15,7 @@ y=A*origReseni
 uvodniOdhad=rand(3,1);
 
 % zvolime omega pro superrelaxaci, nebude optimalni, nevadi
-omega=[0.1, 0.6, 1, 1.5, 1.9];
+omega=[0.1, 0.3, 0.7, 1, 1.5, 1.9];
 
 %% GAUSS-SEIDEL
 
@@ -42,8 +42,8 @@ omega=[0.1, 0.6, 1, 1.5, 1.9];
     hold on
 
 %% volim ruzne omega
-    for i=1:5
-        vzdSuperRelaxace = superrelax(A,omega(i), uvodniOdhad, iteraci, y, origReseni)
+    for i=1:6
+        vzdSuperRelaxace = superrelax(A,omega(i), uvodniOdhad, iteraci, y, origReseni);
         txt = ['omega=',num2str(omega(i))];
         plot(osaX,vzdSuperRelaxace(1,:),'DisplayName',txt);   
     end
